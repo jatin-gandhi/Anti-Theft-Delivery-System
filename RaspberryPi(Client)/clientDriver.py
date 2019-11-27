@@ -122,13 +122,12 @@ class Client:
                 
             else:
                 return None
-                
-        
-
 
 def main():
     global serverPort
     global solenoidObject
+    senderEmail = "xxxxxx@gmail.com
+    senderPassword ="xxxxxxxxxx"
     while True:
         obj =Client()
         if rfidFlag ==0:
@@ -142,7 +141,7 @@ def main():
                 if pre =="13":
                     print("unknown")
                     receiver = obj.receiverMail()
-                    sendEmailObject = Mail('contacthritik@gmail.com',receiver,'apple12orange')
+                    sendEmailObject = Mail(senderEmail,receiver,senderPassword)
                     sendEmailObject.sendMail('frame5.jpg')
                     print("sentEmail")
                 elif (pre =="0" or pre=="1" or pre =="2") and (doorFlag == 1):
@@ -159,6 +158,5 @@ def main():
             print("Closing ...... Not found")
            
         time.sleep(4)
-
-
+        
 main()
