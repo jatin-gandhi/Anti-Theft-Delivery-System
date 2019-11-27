@@ -14,14 +14,3 @@ class Solenoid:
     def unlock(self):
         GPIO.output(self.relay_pin, 0)
         time.sleep(5)
-"""
-S = Solenoid()
-S.lock()
-time.sleep(5)
-
-S.unlock()
-time.sleep(5)
-
-S.lock()
-time.sleep(5)
-"""
