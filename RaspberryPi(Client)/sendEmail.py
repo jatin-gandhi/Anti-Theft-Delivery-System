@@ -33,6 +33,3 @@ class Mail:
         server.sendmail(self.email_user,self.email_send,text)
         server.quit()
         
-#obj = Mail('contacthritik@gmail.com','jating32@gmail.com','apple12orange')
-#obj.sendMail('frame5.jpg')
-
