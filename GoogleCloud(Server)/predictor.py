@@ -49,7 +49,6 @@ class Predictor:
             for key in frequency.keys():
                 if frequency[prediction] <= frequency[key]:
                     prediction = key
-            #if frequency[prediction] >= 0.8 *len(self.predeictions):
         else:
             prediction = None
 
