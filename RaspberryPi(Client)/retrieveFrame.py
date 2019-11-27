@@ -16,7 +16,6 @@ class Frame:
         cap = cv2.VideoCapture(0)
         i=0
         start = time.time()
-
         while time.time() - start < 3:
             i +=1
             ret,frame = cap.read()
