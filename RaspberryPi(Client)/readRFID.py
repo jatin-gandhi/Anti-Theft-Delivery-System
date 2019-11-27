@@ -7,13 +7,9 @@ class RFID:
     def read(self):
         try:
                 id, text = self.reader.read()
-                print(len(str(id)))
-                print(text)
                 count=0
                 for i in text:
                     print("#"+i,end="")
-                print(count)
-                print(id)
         finally:
                 pass
         
