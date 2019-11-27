@@ -27,7 +27,7 @@ class EncodeFaces:
         print(self.knownEncodings.shape)
         self.dataframe = pd.DataFrame(self.knownEncodings)
         print(self.dataframe.head())
-        self.dataframe.to_csv("dataset4.csv")
+        self.dataframe.to_csv("dataset.csv")
 
 obj = EncodeFaces()
 obj.createDataset()
