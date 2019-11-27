@@ -1,6 +1,4 @@
-  
 import boto3
-#from mfrc522 import SimpleMFRC522
 from botocore.exceptions import ClientError
 
 class readCloud:
@@ -13,32 +11,19 @@ class readCloud:
 
 	def send_email(self):
 	        table = self.dynamodb.Table('Customer_1')
-
 	        response = table.scan()
 	        data = response['Items']
-	        
-	        #print(data)
-
-	        orderid = int(self.text)
+		orderid = int(self.text)
 	        rfid = int(self.id)
-                #status=0
 	        for dic in data:
 	            if rfid == dic["rfID"] and orderid == dic["orderID"] and 0==dic["Status"]:
 	                print("Nice")
 	                SENDER = "adityak1277@gmail.com"
-	                RECIPIENT = str(dic["Email"])
-	                        
-	                    
+	                RECIPIENT = str(dic["Email"]	                    
 	                AWS_REGION = "us-west-2"
-
-	                    
-	                SUBJECT = "Order Status"
-
-	                    
+			SUBJECT = "Order Status"    
 	                BODY_TEXT = ("Your order with id: "+ str(dic["orderID"]) + " has been delivered.")
-
 	                x=str(dic["orderID"])            
-	                    
 	                BODY_HTML = """<html>
 	                    <head></head>
 	                    <body>
@@ -46,16 +31,10 @@ class readCloud:
 	                    <p>Your order with id:{}has been delivered.</p>
 	                    </body>
 	                    </html>
-	                    """.format(x)
-	                    
-	                CHARSET = "UTF-8"
-
-	                    
+	                    """.format(x)	                    
+	                CHARSET = "UTF-8"	                    
 	                client = boto3.client('ses',region_name=AWS_REGION)
-
-	                    
-	                try:
-	                        
+	                try:	                        
 	                    response = client.send_email(
 	                    Destination={
 	                        'ToAddresses': [
