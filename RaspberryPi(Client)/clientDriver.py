@@ -14,7 +14,9 @@ from botocore.exceptions import ClientError
 
 rfidFlag = 0
 doorFlag = 0
-
+pre = None
+rfidID = None
+rfidText = None
 solenoidObject = Solenoid()
 
 try:
@@ -24,9 +26,6 @@ try:
 except:
     print("File not found")
 
-pre = None
-rfidID = None
-rfidText = None
 
 class Client:
     def __init__(self):
@@ -106,20 +105,16 @@ class Client:
         global rfidText
         self.dynamodb = boto3.resource('dynamodb', region_name='us-west-2')
         table = self.dynamodb.Table('Customer_1')
-
         response = table.scan()
         data = response['Items']
-
         orderid = int(rfidText)
-        rfid = int(rfidID)
-                
+        rfid = int(rfidID)                
         for dic in data:
             if rfid == dic["rfID"] and orderid == dic["orderID"] :
                 print("Nice")
                 SENDER = "adityak1277@gmail.com"
                 RECIPIENT = str(dic["Email"])
-                return RECIPIENT
-                
+                return RECIPIENT                
             else:
                 return None
 
